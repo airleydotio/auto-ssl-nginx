@@ -48,6 +48,7 @@ RUN echo "What did one config file say to another? You auto know this by now! ðŸ
 COPY ./conf.d/default.conf /etc/nginx/conf.d/default.conf
 COPY ./mime.types /etc/nginx/mime.types
 COPY ./nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+COPY ./public /var/www/html
 
 # ðŸš€ Copy Entrypoint Script
 # =======================

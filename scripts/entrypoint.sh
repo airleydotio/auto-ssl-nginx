@@ -2,7 +2,7 @@
 set -e
 
 # 🌟 ==========================================
-# 🚀 SailMail Nginx Entrypoint Script 
+# 🚀 Nginx Entrypoint Script 
 # 🔧 Handles SSL, configs and initialization
 # 🎭 Warning: Contains dad jokes!
 # ==========================================
@@ -13,7 +13,7 @@ set -e
 # ------------------------------------------
 wait_for_app() {
     echo "🔄 Waiting for app to be ready..."
-    while ! curl -s http://app:3000/api/health > /dev/null; do
+    while ! curl -s https://app.airley.io/ > /dev/null; do
         sleep 2
     done
     echo "✅ App is ready and accepting connections! (That's what TCP said to UDP!)"
@@ -53,13 +53,13 @@ init_auto_ssl() {
 # Because it had too many dependencies!
 # ----------------------------
 main() {
-    echo "🌟 Starting SailMail Nginx initialization... (Time to ship some bits!)"
+    echo "🌟 Starting Nginx initialization... (Time to ship some bits!)"
     wait_for_app
     setup_ssl
     init_auto_ssl
     
     echo "✨ All systems go! Starting OpenResty... (Rest-y assured, we're ready!)"
-    echo "🎉 SailMail is ready to sail the digital seas! (Water you waiting for?)"
+    echo "🎉 Nginx is ready to sail the digital seas! (Water you waiting for?)"
     exec "$@"
 }
 

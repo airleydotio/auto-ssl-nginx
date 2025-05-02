@@ -1,0 +1,26 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+            fetch-depth: 0
+      - id: deploy
+        name: Deploy to dokku
+        uses: idoberko2/dokku-deploy-github-action@v1
+        with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+            dokku-host: '40.76.122.193'
+            app-name: 'nginx'
+            git-push-flags: '--force'
